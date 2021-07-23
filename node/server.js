@@ -30,6 +30,7 @@ app.get('/', (req, res) => {
             throw err;
         } else {
             console.log(results);
+            res.render("index", {info: results});
         }
     });
 });
