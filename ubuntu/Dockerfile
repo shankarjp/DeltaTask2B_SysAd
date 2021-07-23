@@ -26,6 +26,7 @@ COPY db.py db.py
 COPY createdb.py createdb.py
 COPY script.sh script.sh
 COPY sqlconn.py sqlconn.py
+COPY 000-default.conf 000-default.conf
 
 RUN chmod +x genUser.sh
 RUN ./genUser.sh
