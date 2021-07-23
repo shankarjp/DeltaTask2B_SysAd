@@ -1,4 +1,4 @@
-FROM node
+FROM node:latest
 
 COPY package.json package.json
 COPY server.js server.js

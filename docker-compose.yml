@@ -9,7 +9,7 @@ services:
       
   mysql:
     container_name: mysql_container
-    image: mysql
+    image: mysql:latest
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: userinfo
@@ -20,7 +20,7 @@ services:
       
   phpmyadmin:
     container_name: phpmyadmin_container
-    image: phpmyadmin
+    image: phpmyadmin:latest
     ports:
       - 8080:80
     environment:
@@ -36,13 +36,6 @@ services:
     links:
       - mysql
     command: npm start
-
-  apache:
-    container_name: apache_container
-    build: ./apache
-    links:
-      - node
-      - mysql
 
 volumes:
   dbdata:
