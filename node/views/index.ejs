@@ -6,10 +6,12 @@
     </head>
     <body>
         <h1>mominfo</h1>
-        <ul>
             <% for(var i=0; i<info.length; i++) { %>
-                <li><%= info[i].date %> <%= info[i].user %> <%= info[i].mom %></li>
+                <p> <%= info[i].date %> </p>
+                <ul>
+                    <li> <%= info[i].user %> </li>
+                    <li> <%= info[i].mom %> </li>
+                </ul>
             <% } %>
-        </ul>
     </body>
 </html>
