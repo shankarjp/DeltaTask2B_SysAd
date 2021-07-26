@@ -79,10 +79,23 @@ app.get('/info', (req, res) => {
         if(err) {
             throw err;
         } else {
+            console.log(results);
             res.render("index", {info: results});
         }
     });
 });
+
+app.post('/info', (req, res) => {
+    let post = {date: req.body.date, user: req.body.user, mom: req.body.mom};
+    let sql = 'INSERT INTO mominfo SET ?';
+    let query = db.query(sql, post, (err, results) => {
+        if(err) {
+            throw err;
+        } else {
+            res.redirect('/info');
+        }
+    })
+})
 
 app.listen(3000, () => {
     console.log('Server running at port 3000');

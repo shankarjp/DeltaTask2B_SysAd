@@ -13,5 +13,11 @@
                     <li> <%= info[i].mom %> </li>
                 </ul>
             <% } %>
+        <form action="/info" method="POST">
+            <input type="date" name="date">
+            <input type="text" name="user">
+            <input type="text" name="mom">
+            <button type="submit">Submit</button>
+        </form>
     </body>
 </html>
