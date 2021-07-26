@@ -94,8 +94,59 @@ app.post('/info', (req, res) => {
         } else {
             res.redirect('/info');
         }
-    })
-})
+    });
+});
+
+app.get('/filters', (req, res) => {
+    res.render("filters");
+});
+
+app.post('/filters', (req, res) => {
+    let date = req.body.fdate;
+    let user = req.body.fuser;
+    console.log(date);
+    console.log(user);
+    if((date !== '') && (user !== '')) {
+        console.log("condition 1");
+        let post = {date: date, user: user};
+        let sql = 'SELECT * FROM mominfo WHERE ?';
+        let query = db.query(sql, db.escape(post), (err, results) => {
+            if(err) {
+                throw err;
+            } else {
+                console.log(results);
+                res.render("index", {info: results});
+            }
+        });
+    } else if((date === '') && (user !== '')) {
+        console.log("condition 2");
+        let post = {user: user};
+        let sql = 'SELECT * FROM mominfo WHERE ?';
+        let query = db.query(sql, post, (err, results) => {
+            if(err) {
+                throw err;
+            } else {
+                console.log(results);
+                res.render("index", {info: results});
+            }
+        });
+    } else if((date !== '') && (user === '')) {
+        console.log("condition 3");
+        let post = {date: date};
+        let sql = 'SELECT * FROM mominfo WHERE ?';
+        let query = db.query(sql, post, (err, results) => {
+            if(err) {
+                throw err;
+            } else {
+                console.log(results);
+                res.render("index", {info: results});
+            }
+        });
+    } else {
+        console.log("condition 4");
+        res.redirect('/info');
+    }
+});
 
 app.listen(3000, () => {
     console.log('Server running at port 3000');
