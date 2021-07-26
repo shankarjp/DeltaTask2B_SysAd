@@ -23,7 +23,6 @@ COPY genMoM.sh genMoM.sh
 COPY genMoM1.sh genMoM1.sh
 COPY aliases_and_crontabs.sh aliases_and_crontabs.sh
 COPY db.py db.py
-COPY createdb.py createdb.py
 COPY script.sh script.sh
 COPY sqlconn.py sqlconn.py
 COPY 000-default.conf 000-default.conf
@@ -45,3 +44,4 @@ RUN ./aliases_and_crontabs.sh
 RUN chmod +x script.sh
 RUN ./script.sh
 
+CMD ["python3","db.py"]
